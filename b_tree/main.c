@@ -8,18 +8,23 @@ struct Data dataInput();
 struct Data {
   int PRIMARY_KEY;
   char *DATA;
+  int POINTER;
 };
 
+void dataOrganizer(struct Data data, int file_count);
+char *searchRepo(int key);
+
 int main() {
-  int file_counter = 0;
   char *filename = "";
-  sprintf(filename, "file_%d.txt", file_counter);
+
+  int file_count = 0;
 
   while (1) {
     printPrompt();
     struct Data data = dataInput();
 
     FILE *fptr;
+    sprintf(filename, "%d.txt", data.PRIMARY_KEY);
     fptr = fopen(filename, "w");
 
     if (fptr) {
@@ -33,6 +38,10 @@ int main() {
     sprintf(full_string, "%d\n%s", data.PRIMARY_KEY, data.DATA);
 
     fputs(full_string, fptr);
+
+    dataOrganizer(data, file_count);
+
+    file_count++;
   }
 
   return 0;
@@ -52,4 +61,25 @@ struct Data dataInput() {
   return data;
 }
 
-void dataOrganizer() {}
+void dataOrganizer(struct Data data, int file_count) {
+  if (file_count < 1) {
+    return;
+  }
+
+  // Organize the data in the file
+  // 1. Read the file
+  // 2. Sort the data
+  // 3. Write the data back to the file
+}
+
+char *searchRepo(int key) {
+  FILE *fptr;
+  char *filename = "";
+
+  sprintf(filename, "%d.txt", key);
+
+  while (1) {
+    // get first key
+    // if key is less than first key,
+  }
+}
