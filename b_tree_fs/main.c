@@ -5,6 +5,8 @@
 void printPrompt();
 struct Data dataInput();
 
+struct Node {};
+
 struct Data {
   int PRIMARY_KEY;
   char *DATA;
